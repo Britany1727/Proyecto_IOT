@@ -1,7 +1,8 @@
 ﻿# Proyecto_IOT
-# Mario Endara
+Mario Endara
 Adrian Caiza
 Britany Chuma
 Katherine Sailema
+
 
 
