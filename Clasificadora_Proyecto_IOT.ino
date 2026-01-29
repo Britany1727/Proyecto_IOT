@@ -34,8 +34,8 @@ Servo servoClasif;
 bool MODO_CALIBRACION = false; // true = ver valores RGB, esto sirve para calibrar un nuevo color en el sensor 
 unsigned long tiempoUltimaDeteccion = 0;
 unsigned long tiempoUltimoEnvio = 0;
-const unsigned long TIEMPO_APAGADO_BANDA = 10000; // 10 segundos
-const unsigned long INTERVALO_ENVIO = 20000; // 20 segundos
+const unsigned long TIEMPO_APAGADO_BANDA = 10000; 
+const unsigned long INTERVALO_ENVIO = 20000; 
 
 bool bandaEncendida = false;
 int colorDetectadoID = 0; // 0=Nada, 1=Rojo, 2=Verde, 3=Azul, 4=Descarte
@@ -60,7 +60,7 @@ void setup() {
   esp8266.begin(115200); // Velocidad por defecto
   delay(100);
   
-  // Cambiar velocidad a 9600 (más estable con SoftwareSerial)
+  // Cambiar velocidad a 9600 
   sendCommand("AT+UART_DEF=9600,8,1,0,0", 2000);
   esp8266.begin(9600);
   delay(100);
@@ -252,7 +252,7 @@ void identificarColor() {
   }
   
   if (colorReconocido) {
-    delay(3000); // Esperar que caiga el objeto
+    delay(5000); // Esperar que caiga el objeto
     servoClasif.write(POS_DESCARTE); // Volver a neutral
   }
 }
@@ -334,7 +334,7 @@ void enviarDatos() {
     Serial.println("✓ Datos enviados exitosamente");
   } else {
     Serial.println("⚠️ Respuesta del servidor:");
-    Serial.println(response.substring(0, 100)); // Mostrar primeros 100 chars
+    Serial.println(response.substring(0, 100)); 
   }
   
   tiempoUltimoEnvio = millis();
